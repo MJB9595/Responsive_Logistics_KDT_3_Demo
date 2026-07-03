@@ -1,0 +1,100 @@
+@import 'tailwindcss';
+
+/* ── Design tokens ────────────────────────────────────────────────
+   메인 프로젝트(coldchain-wms-react)와 동일한 sky/slate 팔레트 + Pretendard.
+   대시보드 데모에 필요한 최소한의 커스텀 애니메이션만 등록한다. */
+@theme {
+  --font-sans:
+    'Pretendard Variable', Pretendard, 'Inter', -apple-system,
+    BlinkMacSystemFont, system-ui, 'Apple SD Gothic Neo', 'Noto Sans KR',
+    sans-serif;
+
+  --animate-rise: rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    background: #f8fafc;
+    color: #0f172a;
+  }
+  ::selection {
+    background: #38bdf8;
+    color: #082f49;
+  }
+}
+
+@layer utilities {
+  /* 스크롤 등장 (메인 프로젝트와 동일한 컨벤션) */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-zoom {
+    opacity: 0;
+    transform: scale(0.96);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .reveal-zoom.is-visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+  /* 게이지: 노출 시 목표 폭까지 성장 */
+  .grow-bar {
+    width: 0;
+    transition: width 1s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms);
+  }
+  .grow-bar.is-visible {
+    width: var(--bar-w, 0%);
+  }
+  /* 사이드바 등 얇은 스크롤 영역 */
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal,
+  .reveal-zoom {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
