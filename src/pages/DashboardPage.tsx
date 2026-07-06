@@ -1,5 +1,6 @@
 import { useEffect, useState, type CSSProperties, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../contexts/AuthContext'
 import Reveal from '../components/Reveal'
 import { useCountUp } from '../hooks/useCountUp'
 import { useInView } from '../hooks/useInView'
@@ -490,6 +491,7 @@ function AlertsCard({ loading, delay }: { loading: boolean; delay: number }) {
 const PERIODS = ['오늘', '이번 주', '이번 달'] as const
 
 export default function DashboardPage() {
+  const { isLoggedIn } = useAuth()
   const [loading, setLoading] = useState(!isFigma)
   const [refreshKey, setRefreshKey] = useState(0)
   const [period, setPeriod] = useState<(typeof PERIODS)[number]>('오늘')
@@ -505,7 +507,7 @@ export default function DashboardPage() {
   return (
     <div className="mx-auto max-w-[1400px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
       {/* demo notice */}
-      {showBanner && (
+      {showBanner && !isLoggedIn && (
         <div className="mb-5 flex items-center gap-3 rounded-xl border border-sky-200 bg-sky-50 px-4 py-3">
           <span className="rounded-md bg-sky-500 px-2 py-0.5 text-[11px] font-extrabold text-white">DEMO</span>
           <p className="flex-1 text-[13px] text-sky-800">
@@ -523,10 +525,15 @@ export default function DashboardPage() {
       )}
 
       {/* header */}
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+      <div className="mb-8 flex flex-col gap-4 border-b border-slate-200/60 pb-6 lg:flex-row lg:items-center lg:justify-between">
         <div>
-          <h1 className="text-[24px] font-extrabold tracking-tight text-slate-900">대시보드</h1>
-          <p className="mt-1 text-[13px] text-slate-500">
+          <h1 className="flex items-center gap-3 text-[36px] font-black tracking-tight text-slate-900">
+            <span className="bg-gradient-to-r from-violet-500 to-fuchsia-500 bg-clip-text text-transparent">대시보드</span>
+            <span className="rounded-full bg-slate-100 px-3 py-1 text-[12px] font-bold tracking-[0.2em] text-slate-500 uppercase">
+              Dashboard
+            </span>
+          </h1>
+          <p className="mt-2 text-[15px] font-medium text-slate-500">
             주문부터 배송·창고·기사까지 전체 물류 현황을 한눈에 확인하세요 · 기준 2026-07-02 14:30
           </p>
         </div>
