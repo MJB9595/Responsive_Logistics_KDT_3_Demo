@@ -263,15 +263,15 @@ function RouteHighlightBanner() {
   return (
     <Panel title="이달의 최적화 하이라이트" delay={0} className="lg:col-span-3">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        {ROUTE_HIGHLIGHTS.map((h, i) => {
+        {ROUTE_HIGHLIGHTS.map((h) => {
           const Icon = HIGHLIGHT_ICONS[h.icon]
           return (
-            <Reveal key={h.icon} delay={i * 60} className="flex gap-3">
+            <div key={h.icon} className="flex gap-3">
               <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-xl ${TINT[ROUTE_KPIS.find((k) => k.key === h.icon)?.tint ?? 'sky']}`}>
                 <Icon className="h-[18px] w-[18px]" />
               </span>
               <p className="text-[12.5px] leading-relaxed text-slate-500">{h.text}</p>
-            </Reveal>
+            </div>
           )
         })}
       </div>
