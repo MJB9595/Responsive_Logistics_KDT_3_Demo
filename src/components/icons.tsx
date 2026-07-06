@@ -255,8 +255,6 @@ export const ArrowUpRight = (p: IconProps) => (
     <path d="M7 17 17 7" />
   </Svg>
 )
-
-<<<<<<< HEAD
 export const Lock = (p: IconProps) => (
   <Svg {...p}>
     <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
