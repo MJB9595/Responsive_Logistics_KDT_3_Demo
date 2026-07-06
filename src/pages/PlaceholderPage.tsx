@@ -361,7 +361,8 @@ function ResourcePage() {
 
     const targetRect = target.getBoundingClientRect();
     const containerRect = container.getBoundingClientRect();
-    const targetY = Math.max(0, container.scrollTop + (targetRect.top - containerRect.top) - SCROLL_OFFSET);
+    const isFirstSection = location.pathname === SECTION_ORDER_RES[0].path;
+    const targetY = isFirstSection ? 0 : Math.max(0, container.scrollTop + (targetRect.top - containerRect.top) - SCROLL_OFFSET);
     const reduceMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (Math.abs(container.scrollTop - targetY) < 1) return;
