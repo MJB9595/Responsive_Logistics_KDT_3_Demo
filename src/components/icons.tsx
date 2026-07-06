@@ -255,4 +255,34 @@ export const ArrowUpRight = (p: IconProps) => (
     <path d="M7 17 17 7" />
   </Svg>
 )
-export const Lock = (p: IconProps) => (<Svg {...p}><rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></Svg>)
+
+export const Lock = (p: IconProps) => (
+  <Svg {...p}>
+    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+  </Svg>
+)
+
+export const Activity = (p: IconProps) => (
+  <Svg {...p}>
+    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+  </Svg>
+)
+
+export const Building = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
+    <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
+    <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" />
+    <path d="M10 6h4M10 10h4M10 14h4M10 18h4" />
+  </Svg>
+)
+
+export const Grid2X2 = (p: IconProps) => (
+  <Svg {...p}>
+    <rect width="7" height="7" x="3" y="3" rx="1" />
+    <rect width="7" height="7" x="14" y="3" rx="1" />
+    <rect width="7" height="7" x="14" y="14" rx="1" />
+    <rect width="7" height="7" x="3" y="14" rx="1" />
+  </Svg>
+)
