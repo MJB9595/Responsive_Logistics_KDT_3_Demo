@@ -3,7 +3,6 @@ import {
   SEED,
   type NotificationAction,
   type NotificationItem,
-  type SettingsState,
 } from "../data/messages"
 import MessageHeader from "../components/messages/MessageHeader"
 import KpiCards from "../components/messages/KpiCards"
@@ -37,7 +36,7 @@ export default function MessagePage() {
   const [selected, setSelected] = useState<Set<string>>(new Set())
   const [page, setPage] = useState(1)
   const [filterOpen, setFilterOpen] = useState(false)
-  const [settingsOpen, setSettingsOpen] = useState(false)
+   
   const [severityFilter, setSeverityFilter] = useState<Set<string>>(new Set())
   const [toast, setToast] = useState<string | null>(null)
   const [mounted, setMounted] = useState(false)
@@ -47,13 +46,7 @@ export default function MessagePage() {
     "all" | "pending" | "resolved"
   >("all")
 
-  const [settings, setSettings] = useState<SettingsState>({
-    temp: true,
-    expiry: true,
-    stock: true,
-    system: false,
-    sound: true,
-  })
+
 
   useEffect(() => {
     setMounted(true)

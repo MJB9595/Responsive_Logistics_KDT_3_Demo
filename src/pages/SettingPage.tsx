@@ -1,6 +1,5 @@
-import { useState, type CSSProperties } from "react";
-import { Link } from "react-router-dom";
-import { ChevronRight, Settings, CheckCircle } from "../components/icons";
+import { useState } from "react";
+import { Settings, CheckCircle } from "../components/icons";
 import SettingsCardList from "../components/setting/SettingsCardList";
 import NotificationRules from "../components/setting/NotificationRules";
 import SystemHealthAside from "../components/setting/SystemHealthAside";

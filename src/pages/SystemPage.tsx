@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState, useRef } from "react";
-import { useLocation, useNavigate, Link } from "react-router-dom";
-import { ChevronRight, Bell } from "../components/icons";
+import { useEffect, useRef } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Bell } from "../components/icons";
 
 // 기존에 정의된 독립적인 페이지 컴포넌트 임포트
 import SettingPage from "./SettingPage"; 
